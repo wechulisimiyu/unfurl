@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webpage Analyzer</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Unfurl</h1>
+        <p>I am analysing any website link you paste into that box, and giving you a response down below. That is the
+            basis, of unfurl, you could say, unlock.</p>
+        <form action="/analyze" method="POST">
+            <div class="form-group">
+                <label for="urlInput">Enter URL:</label>
+                <input type="text" class="form-control" id="urlInput" name="url" required>
+            </div>
+            <button type="submit" class="btn btn-primary mt-2" id="analyzeButton">Analyze</button>
+        </form>
+        <div class="mt-4">
+            <div id="alertWorking" class="alert alert-info d-none" role="alert">
+                Analysis is in progress...
+            </div>
+            <% if (result !==null) { %>
+                <div class="alert alert-info" role="alert">
+                    <%= result %>
+                </div>
+                <div class="alert alert-success" role="alert">
+                    I have generated a screenshot of the webpage, down below.
+                </div>
+                <a href="/" class="btn btn-secondary mt-3">Go Back Home</a>
+                <% } %>
+        </div>
+        <% if (screenshotPath) { %>
+            <img src="<%= screenshotPath %>" class="img-fluid mt-4" alt="Screenshot">
+            <% } %>
+    </div>
+    <!-- <script>
+        // Handle form submission
+        document.getElementById('analyzeForm').addEventListener('submit', function () {
+            // Show alert indicating analysis is in progress
+            document.getElementById('alertWorking').classList.remove('d-none');
+        });
+    </script> -->
+    <script>
+        // Handle button click
+        document.getElementById('analyzeButton').addEventListener('click', function (event) {
+            // Show alert indicating analysis is in progress
+            document.getElementById('alertWorking').classList.remove('d-none');
+        });
+    </script>
+</body>
+
+</html>
